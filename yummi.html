@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>請相信我的悠咪 TRUST MY YUUMI</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif; margin: 0; background: #0b1220; color: #e8eefc; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 28px 18px 40px; }
+    .card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 18px; }
+    h1 { margin: 8px 0 10px; font-size: 28px; }
+    p { line-height: 1.7; margin: 10px 0; }
+    .tag { display:inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(124,92,255,.22); border: 1px solid rgba(124,92,255,.35); font-size: 13px; margin-right: 8px;}
+    img { width: 100%; border-radius: 14px; margin-top: 12px; border: 1px solid rgba(255,255,255,.12); }
+    .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    button, a.btn {
+      cursor:pointer; border:none; border-radius: 12px; padding: 10px 12px; font-size: 15px;
+      background: rgba(255,255,255,.12); color: #e8eefc; text-decoration:none;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    button:hover, a.btn:hover { background: rgba(255,255,255,.18); }
+    .small { opacity:.8; font-size: 13px; margin-top: 10px; }
+    .quote { font-size: 18px; background: rgba(0,0,0,.25); padding: 12px 14px; border-radius: 12px; border: 1px dashed rgba(255,255,255,.22); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <span class="tag">悠咪保證班</span>
+      <span class="tag">目前專精等級12</span>
+
+      <h1>隊友們你好，請相信我的悠咪 TRUST MY YUUMI🐱</h1>
+
+      <div class="quote" id="line">
+        我不是來送的，我是來帶你上分的。
+      </div>
+
+      <div class="btns">
+        <button onclick="nextLine()">換一句咪名言</button>
+        <a class="btn" href="https://op.gg/zh-tw/lol/summoners/tw/Antarctic%20meow-9994/" target="_blank" rel="noreferrer"> 本咪的OP.GG</a>
+      </div>
+
+      <p>
+        1) 我會插眼👁️（真的）<br/>
+        2) 我會保護好AD🕶️（也是真的）<br/>
+        3) 我會跟打野（不亂逛）<br/>
+        4) 我會開戰按R😤（不把大招留到下一局）<br/>
+        5) 我會治癒＋虛弱（如果沒有是我忘了或太慌了😝）<br/>
+      </p>
+
+      <p style="font-size:22px; font-weight:700; color:#ffd166;">
+      若本局輸了：是對面太強；若贏了：一定是本咪的功勞。
+      </p>
+
+      <!-- 搞笑圖片：把 src 換成你想放的圖片網址（例如 Imgur、Discord、自己的圖床） -->
+      <img id="meme" alt="搞笑悠咪圖片" src="yuumi.jpg" />
+
+      
+
+      <p class="small">相信悠咪 悠咪就會幫你❤️</p>
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "我不是來送的，我是來帶你上分的🆙。",
+      "你打傷害，我打信仰；悠咪打的是羈絆💕。",
+      "放心，我的E不是裝飾品，是你最堅強的後盾💪。",
+      "我會跟對人：誰最肥我就黏誰（很合理）🤔。",
+      "如果我沒插眼，那一定是眼位太害羞不想被看見😳。"
+    ];
+
+    function nextLine(){
+      const pick = lines[Math.floor(Math.random()*lines.length)];
+      document.getElementById("line").textContent = pick;
+    }
+
+    
+  </script>
+</body>
+</html>
