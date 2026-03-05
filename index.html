@@ -29,7 +29,8 @@
       margin-right: 8px;
     }
 
-    img {
+/* 只讓卡片內容的一般圖片吃到這個樣式，不要影響裝備小圖 */
+    .card > img{
       width: 100%;
       border-radius: 14px;
       margin-top: 12px;
@@ -176,6 +177,9 @@
       height:36px;
       object-fit:contain;
       flex-shrink:0;
+      margin:0;           /* 防止吃到全域 margin-top */
+      border:0;           /* 防止吃到全域 border */
+      border-radius:8px;  /* 裝備格子好看 */
     }
     /* === Easter Egg Modal === */
     .egg-overlay{
