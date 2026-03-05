@@ -94,6 +94,131 @@
     .plain-list { margin: 8px 0 12px; padding-left: 18px; line-height: 1.75; }
     /* .plain-list { list-style:none; padding-left:0; } */
     .plain-list li { margin: 4px 0; }
+    /* === Yuumi Case Files === */
+    .case-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (min-width: 720px){
+      .case-grid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .case-card{
+      cursor:pointer;
+      user-select:none;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .case-card:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.22);
+    }
+    .case-card img{
+      width:100%;
+      height: 110px;
+      object-fit: cover;
+      display:block;
+      margin:0;
+      border:0;
+      border-radius: 0;
+    }
+    .case-card .cap{
+      text-align:center;
+      font-weight:800;
+      font-size:15px;
+    }
+    .case-panel{
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(0,0,0,.22);
+      display:none;
+      animation: popIn .18s ease-out;
+    }
+    @keyframes popIn{
+      from{ transform: translateY(6px); opacity:0; }
+      to{ transform: translateY(0); opacity:1; }
+    }
+    .case-panel .case-line{
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 10px 0;
+    }
+    .case-panel img{
+      width:100%;
+      height:auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      margin:0;
+    }
+    .case-hint{
+      opacity:.75;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    .case-reset{
+      margin-top: 10px;
+    }
+    .item-row{
+      display:flex;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .item{
+      width:42px;
+      height:42px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.2);
+    }
+    /* === Easter Egg Modal === */
+    .egg-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9999;
+    }
+
+    .egg-modal{
+      max-width: 520px;
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 16px;
+      padding: 16px;
+      backdrop-filter: blur(6px);
+    }
+
+    .egg-title{
+      font-weight: 900;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .egg-modal img{
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      margin: 0;
+    }
+
+    .egg-text{
+      margin: 10px 0 12px;
+      line-height: 1.8;
+      opacity: .95;
+    }
   </style>
 </head>
 
@@ -200,7 +325,52 @@
       <button onclick="alert('系統警告：悠咪正在考慮購買鞋子，請立即改善隊伍氛圍。')">
         檢查悠咪是否準備出鞋子
       </button>
+      <h2 class="sec">
+        <span class="ico">📂</span>
+        <span class="title">請選擇你本場的輔助類型 </span>
+      </h2>
 
+      <div class="case-grid">
+        <div class="case-card" onclick="showCase(1)">
+          <img src="case1.jpg" alt="案件一縮圖">
+          <div class="cap">軟輔</div>
+        </div>
+
+        <div class="case-card" onclick="showCase(2)">
+          <img src="case2.jpg" alt="案件二縮圖">
+          <div class="cap">硬輔</div>
+        </div>
+
+        <div class="case-card" onclick="showCase(3)">
+          <img src="case3.jpg" alt="案件三縮圖">
+          <div class="cap">法輔</div>
+        </div>
+
+        <div class="case-card" onclick="showCase(4)">
+          <img src="case4.jpg" alt="案件四縮圖">
+          <div class="cap">ad流輔助</div>
+        </div>
+      </div>
+
+      <div id="casePanel" class="case-panel">
+
+        <p id="caseLine" class="case-line"></p>
+
+        <img id="caseBig" src="" alt="案件大圖">
+
+        <!-- 裝備圖片 -->
+        <div id="caseItems" class="item-row"></div>
+
+        <!-- 裝備說明 -->
+        <p id="itemText"></p>
+
+        <div class="case-hint">提示：你點別的案件，這裡會直接換內容。</div>
+
+        <div class="case-reset">
+          <button onclick="hideCase()">收起案件</button>
+        </div>
+
+      </div>
       <hr class="sep"/>
 
       <h2 class="sec">
@@ -220,7 +390,29 @@
       <p class="small">相信悠咪，悠咪就會幫你❤️</p>
     </div>
   </div>
+  <div id="eggOverlay" class="egg-overlay" onclick="closeEgg()">
+    <div class="egg-modal" onclick="event.stopPropagation()">
+      <div class="egg-title">🏆 Achievement Unlocked</div>
+      <img id="eggImg" src="easter-egg.jpg" alt="彩蛋圖片">
+      <p class="egg-text">
+      恭喜你發現本網站最大的秘密。<br><br>
+      其實我只會一個英雄。<br><br>
+      「真正的悠咪玩家」<br><br>
 
+      角色池：<br>
+      Yuumi<br>
+      Yuumi<br>
+      Yuumi<br>
+      Yuumi<br><br>
+
+      深度：無限。<br>
+      多樣性：0。<br>
+      如果悠咪被 Ban：<br>
+      那這場遊戲就交給你們了。
+      </p>
+      <button onclick="closeEgg()">強制接受</button>
+    </div>
+  </div>
   <script>
     const lines = [
       "我不是來送的，我是來帶你上分的🆙。",
@@ -234,7 +426,71 @@
       const pick = lines[Math.floor(Math.random() * lines.length)];
       document.getElementById("line").textContent = pick;
     }
+    // ✅ 放在 showCase 外面：才會累積四個點擊
+    const seenCases = new Set();
+    let eggShown = false; // 只跳一次
 
+    function showCase(n){
+
+      const data={
+        1:{
+          text:"出裝思路：主打一個補。AD只要不暴斃，本咪就能把他奶到對面懷疑人生。",
+          img:"case11.jpg",
+          items:["moonstone.png","staff.png","redemption.png"],
+          itemText:"補量：+300%<br>隊友存活率：+80%<br>AD心態：穩定<br>打野：開始蹭治療"
+        },
+
+        2:{
+          text:"出裝思路：給我鋼一下。今天不是輔助，是裝甲貓。",
+          img:"case22.jpg",
+          items:["locket.png","knight.png","vow.png"],
+          itemText:"坦度：+250%<br>對面困惑度：+100%<br>AD心態：？？？<br>聊天室：『這貓怎麼那麼硬』"
+        },
+
+        3:{
+          text:"出裝思路：咪也想 Q 一發蹦死人。輔助也是有夢想的。",
+          img:"case33.jpg",
+          items:["luden.png","shadow.png","void.png"],
+          itemText:"Q傷害：+200%<br>對面血壓：+300%<br>AD存在感：-40%<br>隊友：等等輔助怎麼在秒人"
+        },
+
+        4:{
+          text:"出裝思路：誰說貓咪沒傷害。今天本咪要讓對面知道什麼叫貓咪火力支援。",
+          img:"case44.jpg",
+          items:["kraken.png","rageblade.png","bork.png"],
+          itemText:"輸出：+350%<br>隊友震驚度：+500%<br>對面聊天室：『???』<br>教練建議：檢查這隻貓"
+        }
+      };
+
+      // 顯示文字與大圖
+      document.getElementById("caseLine").textContent = data[n].text;
+      document.getElementById("caseBig").src = data[n].img;
+
+      // 顯示裝備
+      const itemBox = document.getElementById("caseItems");
+      itemBox.innerHTML = "";
+      data[n].items.forEach(item=>{
+        itemBox.innerHTML += `<img src="${item}" class="item" alt="裝備">`;
+      });
+
+      // 顯示裝備說明（含 <br>）
+      document.getElementById("itemText").innerHTML = data[n].itemText;
+
+      // 打開面板
+      document.getElementById("casePanel").style.display = "block";
+
+      // ✅ 累積點擊
+      seenCases.add(n);
+
+      // ✅ 四個都點過：觸發彩蛋
+      if (!eggShown && seenCases.size === 4) {
+        eggShown = true;
+        openEgg();
+      }
+    }
+    function hideCase(){
+      document.getElementById("casePanel").style.display="none";
+      }
     function predictWinrate() {
       const results = [
         "勝率 72%<br>原因：你相信悠咪，系統判定隊伍氣氛良好。",
@@ -249,6 +505,21 @@
 
       const random = Math.floor(Math.random() * results.length);
       document.getElementById("winrateResult").innerHTML = results[random];
+    }
+    function openEgg(){
+      const overlay = document.getElementById("eggOverlay");
+      overlay.style.display = "flex";
+    }
+
+    function closeEgg(){
+      const overlay = document.getElementById("eggOverlay");
+      overlay.style.display = "none";
+    }
+
+    // （可選）如果你想測試用：重置已看過的四格
+    function resetEgg(){
+      seenCases.clear();
+      eggShown = false;
     }
   </script>
 </body>
