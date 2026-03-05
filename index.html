@@ -4,25 +4,99 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>請相信我的悠咪 TRUST MY YUUMI</title>
+
   <style>
-    body { font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif; margin: 0; background: #0b1220; color: #e8eefc; }
+    body {
+      font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
+      margin: 0;
+      background: #0b1220;
+      color: #e8eefc;
+    }
+
     .wrap { max-width: 720px; margin: 0 auto; padding: 28px 18px 40px; }
     .card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 18px; }
+
     h1 { margin: 8px 0 10px; font-size: 28px; }
-    p { line-height: 1.7; margin: 10px 0; }
-    .tag { display:inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(124,92,255,.22); border: 1px solid rgba(124,92,255,.35); font-size: 13px; margin-right: 8px;}
-    img { width: 100%; border-radius: 14px; margin-top: 12px; border: 1px solid rgba(255,255,255,.12); }
+    p { line-height: 1.75; margin: 10px 0; }
+
+    .tag {
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(124,92,255,.22);
+      border: 1px solid rgba(124,92,255,.35);
+      font-size: 13px;
+      margin-right: 8px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 14px;
+      margin-top: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
     .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+
     button, a.btn {
-      cursor:pointer; border:none; border-radius: 12px; padding: 10px 12px; font-size: 15px;
-      background: rgba(255,255,255,.12); color: #e8eefc; text-decoration:none;
+      cursor:pointer;
+      border:none;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 15px;
+      background: rgba(255,255,255,.12);
+      color: #e8eefc;
+      text-decoration:none;
       border: 1px solid rgba(255,255,255,.18);
     }
+
     button:hover, a.btn:hover { background: rgba(255,255,255,.18); }
+
     .small { opacity:.8; font-size: 13px; margin-top: 10px; }
-    .quote { font-size: 18px; background: rgba(0,0,0,.25); padding: 12px 14px; border-radius: 12px; border: 1px dashed rgba(255,255,255,.22); }
+
+    .quote {
+      font-size: 18px;
+      background: rgba(0,0,0,.25);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,.22);
+    }
+
+    hr.sep {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.12);
+      margin: 16px 0;
+    }
+
+    /* ✅ 標題 emoji 固定欄寬：讓每個標題第一個字對齊 */
+    h2.sec {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 18px 0 8px;
+      font-size: 22px;
+    }
+    h2.sec .ico {
+      width: 1.6em;
+      text-align: center;
+      flex: 0 0 1.6em;
+    }
+    h2.sec .title { flex: 1; }
+    h2.sec .ico.r { opacity: .9; }
+
+    /* ✅ 守則排版：無點點、行距更舒服、內文縮排像 tab */
+    .rules { margin: 0; padding: 0; list-style: none; }
+    .rules li { margin-bottom: 18px; }
+    .rules .rule-title { display: block; font-weight: 800; margin-bottom: 6px; }
+    .rules .rule-text { margin: 0; padding-left: 2em; text-indent: 0; opacity: .95; }
+
+    /* ✅ 鞋子系統那個清單如果你不想要點點，把 list-style:none 打開即可 */
+    .plain-list { margin: 8px 0 12px; padding-left: 18px; line-height: 1.75; }
+    /* .plain-list { list-style:none; padding-left:0; } */
+    .plain-list li { margin: 4px 0; }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="card">
@@ -31,33 +105,119 @@
 
       <h1>隊友們你好，請相信我的悠咪 TRUST MY YUUMI🐱</h1>
 
-      <div class="quote" id="line">
-        我不是來送的，我是來帶你上分的。
-      </div>
+      <div class="quote" id="line">我不是來送的，我是來帶你上分的。</div>
 
       <div class="btns">
         <button onclick="nextLine()">換一句咪名言</button>
-        <a class="btn" href="https://op.gg/zh-tw/lol/summoners/tw/Antarctic%20meow-9994/" target="_blank" rel="noreferrer"> 本咪的OP.GG</a>
+        <a class="btn"
+           href="https://op.gg/zh-tw/lol/summoners/tw/Antarctic%20meow-9994/"
+           target="_blank" rel="noreferrer">本咪的OP.GG</a>
       </div>
 
+      <img id="meme1" alt="搞笑悠咪圖片" src="yuumi.jpg" />
+
+      <h2 class="sec">
+        <span class="ico">✌️</span>
+        <span class="title">咪會負責的事&nbsp;&nbsp;&nbsp;&nbsp;👌</span>
+        
+      </h2>
+
       <p>
-        1) 我會插眼👁️（真的）<br/>
-        2) 我會保護好AD🕶️（也是真的）<br/>
-        3) 我會跟打野（不亂逛）<br/>
-        4) 我會開戰按R😤（不把大招留到下一局）<br/>
-        5) 我會治癒＋虛弱（如果沒有是我忘了或太慌了😝）<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1) 我會插眼👁️（真的）<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) 我會保護好AD🕶️（也是真的）<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3) 我會跟打野（不亂逛）<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4) 我會開戰按R😤（不把大招留到下一局）<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5) 我會治癒＋虛弱（如果沒有是我忘了或太慌了😝）
       </p>
 
-      <p style="font-size:22px; font-weight:700; color:#ffd166;">
-      若本局輸了：是對面太強；若贏了：一定是本咪的功勞。
+      <p style="font-size:22px; font-weight:800; color:#ffd166; margin-top:12px;">
+        若本局輸了：是對面太強；若贏了：一定是本咪的功勞。
       </p>
 
-      <!-- 搞笑圖片：把 src 換成你想放的圖片網址（例如 Imgur、Discord、自己的圖床） -->
-      <img id="meme" alt="搞笑悠咪圖片" src="yuumi.jpg" />
+      <hr class="sep"/>
 
-      
+      <h2 class="sec">
+        <span class="ico">🐱</span>
+        <span class="title">悠咪玩家守則&nbsp;&nbsp;&nbsp;&nbsp;📋</span>
+        
+      </h2>
 
-      <p class="small">相信悠咪 悠咪就會幫你❤️</p>
+      <ol class="rules">
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則一：信任原則</span>
+          <p class="rule-text">請相信悠咪玩家的判斷。悠咪不說話的時候，通常是在思考怎麼贏這場遊戲。</p>
+        </li>
+
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則二：搭車禮儀</span>
+          <p class="rule-text">當悠咪上車時，請不要突然往敵方五人中間衝刺。悠咪是輔助，不是安全氣囊。</p>
+        </li>
+
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則三：關於鞋子</span>
+          <p class="rule-text">正常情況下，悠咪是不需要鞋子的。如果悠咪出了鞋子，代表隊伍內部出現了嚴重的信任問題。</p>
+        </li>
+
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則四：最佳宿主</span>
+          <p class="rule-text">悠咪會優先跟隨本場最有潛力的玩家。不是咪偏心，而是戰術選擇。</p>
+        </li>
+
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則五：Q技能責任</span>
+          <p class="rule-text">如果Q沒有命中敵人，那通常是因為敵人走位過於不講道理。</p>
+        </li>
+
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則六：團戰職責</span>
+          <p class="rule-text">悠咪的任務是確保隊友能持續戰鬥。如果團戰輸了，請先檢討對面的裝備是否過於離譜。</p>
+        </li>
+
+        <li>
+          <span class="rule-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守則七：終極信念</span>
+          <p class="rule-text">只要隊伍還有一絲希望，悠咪就會繼續補血。</p>
+        </li>
+      </ol>
+
+      <hr class="sep"/>
+
+      <h2 class="sec">
+        <span class="ico">⚠️</span>
+        <span class="title">悠咪鞋子警告系統&nbsp;&nbsp;&nbsp;&nbsp;⚠️</span>
+        
+      </h2>
+
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正常情況下，悠咪是不需要鞋子的。</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果悠咪出了鞋子，通常代表以下幾種情況：</p>
+
+      <ul class="plain-list">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.隊友不讓悠咪上車</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.隊友突然衝進 1v5</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.ADC 對線期瘋狂往前送</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.團隊出現嚴重信任危機</p>
+      </ul>
+
+      <button onclick="alert('系統警告：悠咪正在考慮購買鞋子，請立即改善隊伍氛圍。')">
+        檢查悠咪是否準備出鞋子
+      </button>
+
+      <hr class="sep"/>
+
+      <h2 class="sec">
+        <span class="ico">🎲</span>
+        <span class="title">本場悠咪勝率預測&nbsp;&nbsp;&nbsp;&nbsp;🎲</span>
+        
+      </h2>
+
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系統將根據隊友狀態、宇宙能量與悠咪的心情進行分析。</p>
+
+      <button onclick="predictWinrate()">開始分析</button>
+
+      <p id="winrateResult" style="font-size:20px; margin-top:10px; font-weight:700;"></p>
+
+      <img id="meme2" alt="搞笑悠咪圖片2" src="yuumi2.jpg" />
+
+      <p class="small">相信悠咪，悠咪就會幫你❤️</p>
     </div>
   </div>
 
@@ -70,12 +230,26 @@
       "如果我沒插眼，那一定是眼位太害羞不想被看見😳。"
     ];
 
-    function nextLine(){
-      const pick = lines[Math.floor(Math.random()*lines.length)];
+    function nextLine() {
+      const pick = lines[Math.floor(Math.random() * lines.length)];
       document.getElementById("line").textContent = pick;
     }
 
-    
+    function predictWinrate() {
+      const results = [
+        "勝率 72%<br>原因：你相信悠咪，系統判定隊伍氣氛良好。",
+        "勝率 63%<br>原因：ADC看起來還算正常。",
+        "勝率 51%<br>原因：中路剛剛說『穩住就好』。",
+        "勝率 42%<br>原因：打野選了一個很想秀的角色。",
+        "勝率 30%<br>原因：有人剛剛在選角說『隨便玩』。",
+        "勝率 12%<br>原因：上路剛剛 ping 了三次問號。",
+        "勝率 88%<br>原因：悠咪今天心情很好。",
+        "勝率 99%<br>原因：悠咪已經準備好 Carry 整場。"
+      ];
+
+      const random = Math.floor(Math.random() * results.length);
+      document.getElementById("winrateResult").innerHTML = results[random];
+    }
   </script>
 </body>
 </html>
