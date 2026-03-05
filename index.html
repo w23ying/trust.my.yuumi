@@ -208,16 +208,23 @@
 
     .egg-modal img{
       width: 100%;
+      max-width: 320px;   /* 限制最大大小 */
       height: auto;
+      display: block;
+      margin: 10px auto;  /* 讓圖片置中 */
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.12);
-      margin: 0;
     }
 
     .egg-text{
       margin: 10px 0 12px;
       line-height: 1.8;
       opacity: .95;
+    }
+    .arrow{
+      margin:0 10px;
+      font-size:22px;
+      color:#aaa;
     }
   </style>
 </head>
@@ -364,10 +371,8 @@
         <!-- 裝備說明 -->
         <p id="itemText"></p>
 
-        <div class="case-hint">提示：你點別的案件，這裡會直接換內容。</div>
-
         <div class="case-reset">
-          <button onclick="hideCase()">收起案件</button>
+          <button onclick="hideCase()">我不喜歡這隻咪</button>
         </div>
 
       </div>
@@ -436,28 +441,28 @@
         1:{
           text:"出裝思路：主打一個補。AD只要不暴斃，本咪就能把他奶到對面懷疑人生。",
           img:"case11.jpg",
-          items:["moonstone.png","staff.png","redemption.png"],
+          items:["moonstone.jpg","staff.jpg","ricekai.jpg"],
           itemText:"補量：+300%<br>隊友存活率：+80%<br>AD心態：穩定<br>打野：開始蹭治療"
         },
 
         2:{
           text:"出裝思路：給我鋼一下。今天不是輔助，是裝甲貓。",
           img:"case22.jpg",
-          items:["locket.png","knight.png","vow.png"],
+          items:["heart.jpg","wantfight.jpg","cheerup.jpg"],
           itemText:"坦度：+250%<br>對面困惑度：+100%<br>AD心態：？？？<br>聊天室：『這貓怎麼那麼硬』"
         },
 
         3:{
           text:"出裝思路：咪也想 Q 一發蹦死人。輔助也是有夢想的。",
           img:"case33.jpg",
-          items:["luden.png","shadow.png","void.png"],
+          items:["luden.jpg","shadow.jpg","deadhat.jpg"],
           itemText:"Q傷害：+200%<br>對面血壓：+300%<br>AD存在感：-40%<br>隊友：等等輔助怎麼在秒人"
         },
 
         4:{
           text:"出裝思路：誰說貓咪沒傷害。今天本咪要讓對面知道什麼叫貓咪火力支援。",
           img:"case44.jpg",
-          items:["kraken.png","rageblade.png","bork.png"],
+          items:["kraken.jpg","rageblade.jpg","bork.jpg"],
           itemText:"輸出：+350%<br>隊友震驚度：+500%<br>對面聊天室：『???』<br>教練建議：檢查這隻貓"
         }
       };
@@ -469,8 +474,12 @@
       // 顯示裝備
       const itemBox = document.getElementById("caseItems");
       itemBox.innerHTML = "";
-      data[n].items.forEach(item=>{
-        itemBox.innerHTML += `<img src="${item}" class="item" alt="裝備">`;
+      data[n].items.forEach((item,i)=>{
+        itemBox.innerHTML += `<img src="${item}" class="item">`;
+
+        if(i < data[n].items.length - 1){
+          itemBox.innerHTML += `<span class="arrow">→</span>`;
+        }
       });
 
       // 顯示裝備說明（含 <br>）
